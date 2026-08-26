@@ -7,14 +7,24 @@ This project is an end-to-end retail sales analytics portfolio project built usi
 The same retail sales dataset was analysed in two complementary ways:
 
 ```text
-CSV Dataset
-   ├── PostgreSQL → SQL analysis
-   └── Power BI   → Interactive dashboard
+   CSV Dataset
+     ↓
+PostgreSQL
+     ↓
+sales table
+     ↓
+powerbi_sales view
+     ↓
+Power Query / Sales Data
+     ↓
+Power BI Model + DAX
+     ↓
+Interactive Dashboard
 ```
 
 The PostgreSQL workflow focuses on data-quality validation, business analysis, advanced SQL techniques, customer segmentation and reusable database objects. The Power BI workflow focuses on interactive reporting, DAX measures, data modelling, drill-through analysis and dashboard storytelling.
 
-> **Note:** Power BI and PostgreSQL use the same source dataset, but the Power BI report is not currently connected directly to PostgreSQL.
+> **Note:** The Power BI report is sourced directly from PostgreSQL using the public.powerbi_sales view in Import mode.
 
 ---
 
@@ -627,6 +637,13 @@ Retail-Sales-Analytics/
 1. Open `sql/retail_sales_analysis.sql`.
 2. Run the script against a PostgreSQL database containing the retail sales dataset.
 3. Review the organised analysis sections covering data quality, KPIs, products, customers, geography, trends, shipping, RFM segmentation and views.
+
+
+### Data Refresh 
+
+The Power BI report uses PostgreSQL as its data source through the `public.powerbi_sales` view.
+
+The PBIX contains imported data and can be opened and explored without a live database connection. To refresh the dataset, PostgreSQL must be running and the `retail_sales_analysis` database and `powerbi_sales` view must be available.
 
 ---
 
